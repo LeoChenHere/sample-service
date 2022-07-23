@@ -1,0 +1,11 @@
+/*
+!/.gitignore
+!gradle
+!gradlew
+!gradlew.bat
+#!gradle.properties
+!build.gradle
+!settings.gradle
+!src
+!libs
+!lib
