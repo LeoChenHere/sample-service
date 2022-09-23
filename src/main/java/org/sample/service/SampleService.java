@@ -2,14 +2,15 @@ package org.sample.service;
 
 import org.sample.entity.RawData;
 import org.sample.entity.RawDataRepository;
-import org.sample.utility.ReturnData;
-import org.sample.utility.ReturnCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import utility.ReturnCode;
+import utility.ReturnData;
 
 import java.util.HashMap;
 
+@CrossOrigin
 @Controller
 @RequestMapping(path="/sample")
 public class SampleService {
@@ -36,7 +37,7 @@ public class SampleService {
 //			hm.put("att_2:", "eth");
 //			alhm.add(hm);
 //		}
-		return ReturnData.returnData(ReturnCode.OK, jsonData);
+		return ReturnData.returnData(ReturnCode.SUCCESS, jsonData);
 	}
 
 	@GetMapping(path="/showall")

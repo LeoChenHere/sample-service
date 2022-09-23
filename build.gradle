@@ -5,14 +5,26 @@ plugins {
 }
 
 group = 'org.sample'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1.0.0'
 sourceCompatibility = '1.8'
 
 repositories {
 	mavenCentral()
+	maven {
+		name 'nexus'
+		url project.repotUrl + project.repoPath
+		credentials {
+			username project.repoUser
+			password project.repoPassword
+		}
+		allowInsecureProtocol = true
+	}
 }
 
 dependencies {
+
+	implementation 'org.sampleservice.lib:sample-service-lib:0.0.1.1.0'
+
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 

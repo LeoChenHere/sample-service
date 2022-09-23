@@ -7,11 +7,16 @@
 4. Open prj via intelliJ
 5. Refactor the package
 6. (optional) Modify application.properties
-   1. `spring.datasource.url=jdbc:mysql://${MYSQL_HOST:localhost}:3306/xxxx`
-   2. `server.port: 8081`
+   1. `spring.datasource.url=jdbc:mysql://${MYSQL_HOST:localhost}:3306/[database_name]`
+   2. `server.port: [database_port]`
 7. (optional) Create database
    1. Character Set : utf8mb4
    2. Collection : utf8mb4_unicode_520_ci
+```mysql
+CREATE DATABASE database_name
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_520_ci
+```
 8. (optional) Grant user
    1. `CREATE USER 'username'@'%' IDENTIFIED BY 'password';`
    2. `GRANT ALL PRIVILEGES ON database_name.* TO 'username'@'%';`
@@ -29,6 +34,4 @@
 2. Mysql
 3. OpenAPI(Swagger3)
    1. http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/
-   2. json data in /v3/api-docs
-4. Elasticsearch
-5. Kibana
+   2. json data in http://localhost:8080/v3/api-docs
