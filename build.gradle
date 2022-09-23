@@ -9,16 +9,16 @@ version = '0.0.1.0.0'
 sourceCompatibility = '1.8'
 
 repositories {
-	mavenCentral()
 	maven {
 		name 'nexus'
-		url project.repotUrl + project.repoPath
+		url "$project.repotUrl"+"$project.servicelibPath"
 		credentials {
 			username project.repoUser
 			password project.repoPassword
 		}
 		allowInsecureProtocol = true
 	}
+	mavenCentral()
 }
 
 dependencies {
