@@ -1,5 +1,9 @@
 package org.sample.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import nonapi.io.github.classgraph.json.JSONUtils;
+import org.sample.entity.Person;
 import org.sample.entity.RawData;
 import org.sample.entity.RawDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import utility.ReturnCode;
 import utility.ReturnData;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 @CrossOrigin
@@ -19,15 +24,17 @@ public class SampleService {
 
 	@PostMapping(path="/add")
 	public @ResponseBody HashMap addData (
-					@RequestParam String dataType,
-					@RequestParam String jsonData
-	) {
+			@RequestBody String jsonInfo
+	) throws JsonProcessingException {
 		//---------- DIVIDER ----------
 
-		RawData entity = new RawData();
-		entity.setDataType(dataType);
-		entity.setJsonData(jsonData);
+		RawData entity = (new ObjectMapper()).readValue(jsonInfo, RawData.class);
 		repo.save(entity);
+
+//		RawData entity = new RawData();
+//		entity.setDataType(dataType);
+//		entity.setJsonData(jsonData);
+//		repo.save(entity);
 
 		//---------- DIVIDER ----------
 //		ArrayList<HashMap> alhm = new ArrayList();
@@ -37,7 +44,25 @@ public class SampleService {
 //			hm.put("att_2:", "eth");
 //			alhm.add(hm);
 //		}
-		return ReturnData.returnData(ReturnCode.SUCCESS, jsonData);
+
+		return ReturnData.returnData(ReturnCode.SUCCESS, jsonInfo);
+	}
+
+	@PostMapping(path="/json")
+	public @ResponseBody Object json(@RequestBody Person person) {
+		return person;
+	}
+
+	@PostMapping(path="/jsonArrayListHashMap")
+	public @ResponseBody Object jsonArrayListHashMap(@RequestBody HashMap<String, Object> alhm) {
+		String name = (String) alhm.get("name");
+		ArrayList<String> imgs = (ArrayList<String>) alhm.get("imgs");
+		String str1 = "";
+		for (String str: imgs) {
+			System.out.println(str);
+			str1 = str1+"参数:"+str+"\n";
+		}
+		return alhm;
 	}
 
 	@GetMapping(path="/showall")
