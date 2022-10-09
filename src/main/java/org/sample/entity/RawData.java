@@ -1,11 +1,12 @@
 package org.sample.entity;
 
 import lombok.Data;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.*;
 import org.sample.utility.Status;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -13,6 +14,10 @@ import java.time.LocalDateTime;
 @IdClass(RawData.Keys.class)
 @Data
 @Entity // This tells Hibernate to make a table out of this class
+@SelectBeforeUpdate // to avoid unnecessary updates
+@Table(uniqueConstraints = {
+        @UniqueConstraint(columnNames = { "app", "dataType", "status" })
+})
 public class RawData implements Serializable{
   @Id
   @GeneratedValue(strategy=GenerationType.AUTO)
