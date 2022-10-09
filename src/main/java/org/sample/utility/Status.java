@@ -4,9 +4,9 @@ import lombok.Getter;
 
 @Getter
 public enum Status implements IBasic{
-    ACTIVE(0, "Active"),
-    DISABLE(1, "Disable"),
-    DELETE(999, "Delete");
+    Active(0, "Active"),
+    Disable(1, "Disable"),
+    Delete(999, "Delete");
 
     private int code;
     private String msg;
