@@ -11,7 +11,7 @@ sourceCompatibility = '1.8'
 repositories {
 	maven {
 		name 'nexus'
-		url "$project.repotUrl"+"$project.servicelibPath"
+		url "$project.repoUrl"+"$project.servicelibPath"
 		credentials {
 			username project.repoUser
 			password project.repoPassword
