@@ -2,7 +2,6 @@ package org.sample.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import nonapi.io.github.classgraph.json.JSONUtils;
 import org.sample.entity.Person;
 import org.sample.entity.RawData;
 import org.sample.entity.RawDataRepository;
@@ -55,7 +54,6 @@ public class SampleService {
 
 	@PostMapping(path="/jsonArrayListHashMap")
 	public @ResponseBody Object jsonArrayListHashMap(@RequestBody HashMap<String, Object> alhm) {
-		String name = (String) alhm.get("name");
 		ArrayList<String> imgs = (ArrayList<String>) alhm.get("imgs");
 		String str1 = "";
 		for (String str: imgs) {

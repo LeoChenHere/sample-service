@@ -66,7 +66,6 @@ public class DeclarationService {
 				repo.save(rawData);
 			}else if( result.size() == 1 ){
 				rawData.setId(result.get(0).getId());
-				rawData.setData(result.get(0).getData());
 				rawData.setCreateTime(result.get(0).getCreateTime());
 				repo.save(rawData);
 				rawData = repo.findByDataType(app, dataType).get(0);
