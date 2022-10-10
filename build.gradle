@@ -18,7 +18,16 @@ repositories {
 		}
 		allowInsecureProtocol = true
 	}
-	mavenCentral()
+	mavenCentral {
+		name 'mavenCentral'
+		url "$project.repoUrl"+"$project.mavenpublicPath"
+		credentials {
+			username project.repoUser
+			password project.repoPassword
+		}
+		allowInsecureProtocol = true
+	}
+	// mavenCentral()
 }
 
 dependencies {
