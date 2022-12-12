@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class ScanBlockTask {
   private int counter = 0;
 
-  @Scheduled(fixedDelay=1000) // enable task : step 3 : add this, fixedDelay / fixedRate is very different or you can use this : cron="*/5 * * * * MON-FRI"
+//  @Scheduled(fixedDelay=1000) // enable task : step 3 : add this, fixedDelay / fixedRate is very different or you can use this : cron="*/5 * * * * MON-FRI"
   public void task() {
     log.info("Hello, {}", counter);
     counter++;

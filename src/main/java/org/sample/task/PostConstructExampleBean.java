@@ -17,6 +17,6 @@ public class PostConstructExampleBean {
 
     @PostConstruct
     public void init() {
-        log.info(" Test PostConstruct {} ", Arrays.asList(environment.getDefaultProfiles()));
+        log.info("==== Test PostConstruct {} ", Arrays.asList(environment.getDefaultProfiles()));
     }
 }
